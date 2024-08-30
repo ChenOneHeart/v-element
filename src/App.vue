@@ -39,7 +39,7 @@
     <CollapseItem name="c" title="c" disabled> this is c context </CollapseItem>
     {{ openedValue }}
   </Collapse>
-  <font-awesome-icon :icon="['fas', 'user-secret']" />
+  <Icon icon="arrow-up" type="primary" size="2xl" spin />
 </template>
 
 <script setup lang="ts">
@@ -47,6 +47,7 @@ import { onMounted, ref } from "vue";
 import Button from "./components/Button/Button.vue";
 import Collapse from "./components/Collapse/Collapse.vue";
 import CollapseItem from "./components/Collapse/CollapseItem.vue";
+import Icon from "./components/Icon/Icon.vue";
 import type { ButtonInstance } from "./components/Button/types";
 const buttonRef = ref<ButtonInstance | null>(null);
 const openedValue = ref(["a"]);

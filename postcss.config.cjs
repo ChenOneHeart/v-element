@@ -7,7 +7,7 @@ module.exports = {
       plugins: {
         beforeEach: [
           require("postcss-for"),
-          require("postcss-conditionals"),
+          // require("postcss-conditionals"),
           require("postcss-color-mix"),
         ],
       },
