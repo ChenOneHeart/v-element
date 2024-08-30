@@ -10,7 +10,7 @@ export interface ButtonProps {
   plain?: boolean,
   round?: boolean,
   circle?: boolean,
-  // loading?: boolean,
+  loading?: boolean,
   disabled?: boolean,
   icon?: string,
   nativeType?: NativeType,

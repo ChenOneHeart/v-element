@@ -1,3 +1,4 @@
+/* 定义按钮变量 */
 .vk-button {
   --vk-button-font-weight: var(--vk-font-weight-primary);
   --vk-button-border-color: var(--vk-border-color);
@@ -17,7 +18,7 @@
   --vk-button-hover-link-text-color: var(--vk-color-info);
   --vk-button-active-color: var(--vk-text-color-primary);
 }
-
+/* 按钮基础样式 */
 .vk-button {
   display: inline-flex;
   justify-content: center;
@@ -79,8 +80,12 @@
     background-color: var(--vk-button-disabled-bg-color);
     border-color: var(--vk-button-disabled-border-color);
   }
+  [class*="vk-icon"] + span {
+    margin-left: 6px;
+  }
 }
 
+/* 不同类型的按钮样式 */
 @each $val in primary, success, warning, info, danger {
   .vk-button--$(val) {
     --vk-button-text-color: var(--vk-color-white);

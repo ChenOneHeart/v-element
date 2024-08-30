@@ -10,8 +10,8 @@
     <Button type="primary">Test Button</Button>
     <Button type="success">success Button</Button>
     <Button type="info">info Button</Button>
-    <Button type="warning">warning Button</Button>
-    <Button type="danger">danger Button</Button>
+    <Button loading type="warning">warning Button</Button>
+    <Button icon="arrow-up" type="danger">danger Button</Button>
   </div>
   <div class="plain">
     <Button plain type="primary">Test Button</Button>

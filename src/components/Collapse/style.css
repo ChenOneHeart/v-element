@@ -34,6 +34,12 @@
   }
   &.is-active {
     border-bottom-color: transparent;
+    .header-angle {
+      transform: rotate(90deg);
+    }
+  }
+  .header-angle {
+    transition: transform var(--vk-transition-duration);
   }
 }
 .vk-collapse-item__content {
@@ -49,5 +55,5 @@
 
 .slide-enter-active,
 .slide-leave-active {
-  transition: height .5s ease-in-out;
+  transition: height var(--vk-transition-duration) ease-in-out;
 }

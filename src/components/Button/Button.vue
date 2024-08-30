@@ -9,23 +9,25 @@
       'is-round': round,
       'is-circle': circle,
       'is-disabled': disabled,
+      'is-loading': loading,
     }"
-    :disabled="disabled"
+    :disabled="disabled || loading"
     :autofocus="autofocus"
     :type="nativeType"
   >
+    <Icon v-if="loading" icon="spinner" spin></Icon>
+    <Icon v-if="icon" :icon="icon"></Icon>
     <span><slot></slot></span>
   </button>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
-export default defineComponent({
+<script setup lang="ts">
+import { ref } from "vue";
+import type { ButtonProps } from "./types";
+import Icon from "../Icon/Icon.vue";
+defineOptions({
   name: "VKButton",
 });
-</script>
-<script setup lang="ts">
-import type { ButtonProps } from "./types";
 withDefaults(defineProps<ButtonProps>(), {
   nativeType: "button",
 });
@@ -35,6 +37,4 @@ defineExpose({
 });
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
