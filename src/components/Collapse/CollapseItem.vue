@@ -18,7 +18,7 @@
       <Icon icon="angle-right" class="header-angle"></Icon>
     </div>
     <Transition @="transitionEvent" name="slide">
-      <div class="vk-collapse-item_wrapper" v-show="isActive">
+      <div class="vk-collapse-item__wrapper" v-show="isActive">
         <div class="vk-collapse-item__content" :id="`item-content-${name}`">
           <slot></slot>
         </div>

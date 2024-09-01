@@ -39,7 +39,8 @@
     <CollapseItem name="c" title="c" disabled> this is c context </CollapseItem>
     {{ openedValue }}
   </Collapse>
-  <Icon icon="arrow-up" type="primary" size="2xl" spin />
+  <Icon icon="arrow-up" type="primary" size="2xl" />
+  <VNode msg="v-node"></VNode>
 </template>
 
 <script setup lang="ts">
@@ -48,6 +49,7 @@ import Button from "./components/Button/Button.vue";
 import Collapse from "./components/Collapse/Collapse.vue";
 import CollapseItem from "./components/Collapse/CollapseItem.vue";
 import Icon from "./components/Icon/Icon.vue";
+import VNode from "./components/VNode.tsx"
 import type { ButtonInstance } from "./components/Button/types";
 const buttonRef = ref<ButtonInstance | null>(null);
 const openedValue = ref(["a"]);

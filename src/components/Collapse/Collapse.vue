@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, provide, type Ref, watch } from "vue";
+import { ref, provide, watch } from "vue";
 import {
   collapseContextKey,
   type NameType,
@@ -30,20 +30,22 @@ watch(props.modelValue, () => {
 });
 
 const handleItemClick = (item: NameType) => {
-  const index = activeNames.value.indexOf(item);
+  let _activeNames = [...activeNames.value];
+
   if (props.accordion) {
     // 开启手风琴模式
-    activeNames.value = [activeNames.value[0] === item ? "" : item];
+    _activeNames = [activeNames.value[0] === item ? "" : item];
   } else {
-    // 未开启手风琴模式
+    const index = activeNames.value.indexOf(item);
     if (index > -1) {
       // 存在 删除数组中的一项
-      activeNames.value.splice(index, 1);
+      _activeNames.splice(index, 1);
     } else {
-      activeNames.value.push(item);
+      // 不存在，插入对应的name
+      _activeNames.push(item);
     }
   }
-
+  activeNames.value = _activeNames;
   emits("update:modelValue", activeNames.value);
   emits("change", activeNames.value);
 };
