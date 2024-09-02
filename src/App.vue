@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Button ref="buttonRef">Test Button</Button>
-    <Button plain>Plain Button</Button>
+    <Button @click="tooltipRef?.show()" ref="buttonRef">Default Button</Button>
+    <Button @click="tooltipRef?.hide()" plain>Plain Button</Button>
     <Button round>Round Button</Button>
     <Button circle>VK</Button>
     <Button disabled>Disabled Button</Button>
@@ -40,7 +40,21 @@
     {{ openedValue }}
   </Collapse>
   <Icon icon="arrow-up" type="primary" size="2xl" />
-  <VNode msg="v-node"></VNode>
+  <div style="margin-left: 200px">
+    <Tooltip
+      :show-delay="100"
+      :hide-delay="100"
+      placement="top"
+      :trigger="trigger"
+      ref="tooltipRef"
+      :popper-options="options"
+    >
+      <img src="./assets/logo.svg" width="200" height="200" />
+      <template #content>
+        <span>content</span>
+      </template>
+    </Tooltip>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -49,14 +63,25 @@ import Button from "./components/Button/Button.vue";
 import Collapse from "./components/Collapse/Collapse.vue";
 import CollapseItem from "./components/Collapse/CollapseItem.vue";
 import Icon from "./components/Icon/Icon.vue";
-import VNode from "./components/VNode.tsx"
+import Tooltip from "./components/Tooltip/Tooltip.vue";
 import type { ButtonInstance } from "./components/Button/types";
+import {
+  type TooltipInstance,
+  type TriggerType,
+} from "./components/Tooltip/types";
+import type { Options } from "@popperjs/core";
+const trigger = ref<TriggerType>("click");
 const buttonRef = ref<ButtonInstance | null>(null);
+const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
+const options: Partial<Options> = {
+  placement: "right",
+  strategy: "fixed",
+};
 onMounted(() => {
-  if (buttonRef.value) {
-    console.log(buttonRef.value.ref);
-  }
+  // if (buttonRef.value) {
+  //   console.log(buttonRef.value.ref);
+  // }
 });
 </script>
 
