@@ -1,10 +1,10 @@
 <template>
   <button
     ref="_ref"
-    class="vk-button"
+    class="vc-button"
     :class="{
-      [`vk-button--${type}`]: type,
-      [`vk-button--${size}`]: size,
+      [`vc-button--${type}`]: type,
+      [`vc-button--${size}`]: size,
       'is-plain': plain,
       'is-round': round,
       'is-circle': circle,

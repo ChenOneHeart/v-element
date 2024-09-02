@@ -42,8 +42,8 @@ describe("Collapse.vue", () => {
     console.log(item[0].attributes("title"));
     // expect(item[0].attributes("title")).toBe("title A");
 
-    const headers = wrapper.findAll(".vk-collapse-item__header");
-    const contents = wrapper.findAll(".vk-collapse-item__wrapper");
+    const headers = wrapper.findAll(".vc-collapse-item__header");
+    const contents = wrapper.findAll(".vc-collapse-item__wrapper");
     // 长度
     expect(headers.length).toBe(3);
     expect(contents.length).toBe(3);

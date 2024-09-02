@@ -1,15 +1,15 @@
-.vk-icon {
-  --vk-icon-color: inherit;
+.vc-icon {
+  --vc-icon-color: inherit;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   position: relative;
   fill: currentColor;
-  color: var(--vk-icon-color);
+  color: var(--vc-icon-color);
   font-size: inherit;
 }
 @each $val in primary, success, info, warning, danger {
-  .vk-icon--$(val) {
-    --vk-icon-color: var(--vk-color-$(val));
+  .vc-icon--$(val) {
+    --vc-icon-color: var(--vc-color-$(val));
   }
 }

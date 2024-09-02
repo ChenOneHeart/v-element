@@ -1,5 +1,5 @@
 <template>
-  <div class="vk-collapse">
+  <div class="vc-collapse">
     <slot></slot>
   </div>
 </template>

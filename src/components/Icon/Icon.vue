@@ -1,7 +1,7 @@
 <template>
   <i
-    class="vk-icon"
-    :class="{ [`vk-icon--${type}`]: type }"
+    class="vc-icon"
+    :class="{ [`vc-icon--${type}`]: type }"
     :style="customStyles"
   >
     <FontAwesomeIcon v-bind="filteredProps" />

@@ -1,6 +1,6 @@
 :root {
-  --vk-color-white: #ffffff;
-  --vk-color-black: #000000;
+  --vc-color-white: #ffffff;
+  --vc-color-black: #000000;
   --colors: (
     primary: #409eff,
     success: #67c23a,
@@ -11,65 +11,72 @@
   );
 
   @each $val, $color in var(--colors) {
-    --vk-color-$(val): $color;
+    --vc-color-$(val): $color;
     @for $i from 3 to 9 by 2 {
       /* @if $i / 2 > 1 { */
-      --vk-color-$(val)-light-$(i): mix(#fff, $(color), .$(i));
+      --vc-color-$(val)-light-$(i): mix(#fff, $(color), .$(i));
       /* } */
     }
-    --vk-color-$(val)-light-8: mix(#fff, $(color), 0.8);
-    --vk-color-$(val)-dark-2: mix(#fff, $(color), 0.2);
+    --vc-color-$(val)-light-8: mix(#fff, $(color), 0.8);
+    --vc-color-$(val)-dark-2: mix(#fff, $(color), 0.2);
   }
 
   /* 中性色 */
-  --vk-bg-color: #ffffff;
-  --vk-bg-color-page: #f2f3f5;
-  --vk-bg-color-overlay: #ffffff;
-  --vk-text-color-primary: #303133;
-  --vk-text-color-regular: #606266;
-  --vk-text-color-secondary: #909399;
-  --vk-text-color-placeholder: #a8abb2;
-  --vk-text-color-disabled: #c0c4cc;
-  --vk-border-color: #dcdfe6;
-  --vk-border-color-light: #e4e7ed;
-  --vk-border-color-lighter: #ebeef5;
-  --vk-border-color-extra-light: #f2f6fc;
-  --vk-border-color-dark: #d4d7de;
-  --vk-border-color-darker: #cdd0d6;
-  --vk-fill-color: #f0f2f5;
-  --vk-fill-color-light: #f5f7fa;
-  --vk-fill-color-lighter: #fafafa;
-  --vk-fill-color-extra-light: #fafcff;
-  --vk-fill-color-dark: #ebedf0;
-  --vk-fill-color-darker: #e6e8eb;
-  --vk-fill-color-blank: #ffffff;
+  --vc-bg-color: #ffffff;
+  --vc-bg-color-page: #f2f3f5;
+  --vc-bg-color-overlay: #ffffff;
+  --vc-text-color-primary: #303133;
+  --vc-text-color-regular: #606266;
+  --vc-text-color-secondary: #909399;
+  --vc-text-color-placeholder: #a8abb2;
+  --vc-text-color-disabled: #c0c4cc;
+  --vc-border-color: #dcdfe6;
+  --vc-border-color-light: #e4e7ed;
+  --vc-border-color-lighter: #ebeef5;
+  --vc-border-color-extra-light: #f2f6fc;
+  --vc-border-color-dark: #d4d7de;
+  --vc-border-color-darker: #cdd0d6;
+  --vc-fill-color: #f0f2f5;
+  --vc-fill-color-light: #f5f7fa;
+  --vc-fill-color-lighter: #fafafa;
+  --vc-fill-color-extra-light: #fafcff;
+  --vc-fill-color-dark: #ebedf0;
+  --vc-fill-color-darker: #e6e8eb;
+  --vc-fill-color-blank: #ffffff;
   /* border */
-  --vk-border-width: 1px;
-  --vk-border-style: solid;
-  --vk-border-color-hover: var(--vk-text-color-disabled);
-  --vk-border: var(--vk-border-width) var(--vk-border-style)
-    var(--vk-border-color);
-  --vk-border-radius-base: 4px;
-  --vk-border-radius-small: 2px;
-  --vk-border-radius-round: 20px;
-  --vk-border-radius-circle: 100%;
+  --vc-border-width: 1px;
+  --vc-border-style: solid;
+  --vc-border-color-hover: var(--vc-text-color-disabled);
+  --vc-border: var(--vc-border-width) var(--vc-border-style)
+    var(--vc-border-color);
+  --vc-border-radius-base: 4px;
+  --vc-border-radius-small: 2px;
+  --vc-border-radius-round: 20px;
+  --vc-border-radius-circle: 100%;
   /* font */
-  --vk-font-size-extra-large: 20px;
-  --vk-font-size-large: 18px;
-  --vk-font-size-medium: 16px;
-  --vk-font-size-base: 14px;
-  --vk-font-size-small: 13px;
-  --vk-font-size-extra-small: 12px;
-  --vk-font-family: "Hvkvetica Neue", Hvkvetica, "PingFang SC",
+  --vc-font-size-extra-large: 20px;
+  --vc-font-size-large: 18px;
+  --vc-font-size-medium: 16px;
+  --vc-font-size-base: 14px;
+  --vc-font-size-small: 13px;
+  --vc-font-size-extra-small: 12px;
+  --vc-font-family: "Hvkvetica Neue", Hvkvetica, "PingFang SC",
     "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-  --vk-font-weight-primary: 500;
+  --vc-font-weight-primary: 500;
   /* disabled */
-  --vk-disabled-bg-color: var(--vk-fill-color-light);
-  --vk-disabled-text-color: var(--vk-text-color-placeholder);
-  --vk-disabled-border-color: var(--vk-border-color-light);
+  --vc-disabled-bg-color: var(--vc-fill-color-light);
+  --vc-disabled-text-color: var(--vc-text-color-placeholder);
+  --vc-disabled-border-color: var(--vc-border-color-light);
 
   /* animation */
-  --vk-transition-duration: .3s;
-  --vk-transition-duration-fast: .2s;
-  
+  --vc-transition-duration: 0.3s;
+  --vc-transition-duration-fast: 0.2s;
+
+  /* box-shadow */
+  --vc-box-shadow: 0px 12px 32px 4px rgba(0, 0, 0, 0.04),
+    0px 8px 20px rgba(0, 0, 0, 0.08);
+  --vc-box-shadow-light: 0px 0px 12px rgba(0, 0, 0, 0.12);
+  --vc-box-shadow-lighter: 0px 0px 6px rgba(0, 0, 0, 0.12);
+  --vc-box-shadow-dark: 0px 16px 48px 16px rgba(0, 0, 0, 0.08),
+    0px 12px 32px rgba(0, 0, 0, 0.12), 0px 8px 16px -8px rgba(0, 0, 0, 0.16);
 }

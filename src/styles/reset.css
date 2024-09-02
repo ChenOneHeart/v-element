@@ -1,8 +1,8 @@
 body {
-  font-family: var(--vk-font-family);
+  font-family: var(--vc-font-family);
   font-weight: 400;
-  font-size: var(--vk-font-size-base);
-  color: var(--vk-font-size-primary);
+  font-size: var(--vc-font-size-base);
+  color: var(--vc-font-size-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
@@ -15,16 +15,16 @@ button {
 }
 
 a {
-  color: var(--vk-color-primary);
+  color: var(--vc-color-primary);
   text-decoration: none;
 
   &:hover,
   &:focus {
-    color: var(--vk-color-primary-light-3);
+    color: var(--vc-color-primary-light-3);
   }
 
   &:active {
-    color: var(--vk-color-primary-dark-2);
+    color: var(--vc-color-primary-dark-2);
   }
 }
 
@@ -34,7 +34,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--vk-text-color-regular);
+  color: var(--vc-text-color-regular);
   font-weight: inherit;
 
   &:first-child {
@@ -47,15 +47,15 @@ h6 {
 }
 
 h1 {
-  font-size: var(vk-font-size--base) + 6px;
+  font-size: var(vc-font-size--base) + 6px;
 }
 
 h2 {
-  font-size: var(vk-font-size--base) + 4px;
+  font-size: var(vc-font-size--base) + 4px;
 }
 
 h3 {
-  font-size: var(vk-font-size--base) + 2px;
+  font-size: var(vc-font-size--base) + 2px;
 }
 
 h4,
@@ -79,16 +79,16 @@ p {
 
 sup,
 sub {
-  font-size: var(--vk-font-size-base) - 1px;
+  font-size: var(--vc-font-size-base) - 1px;
 }
 
 small {
-  font-size: var(--vk-font-size-base) - 2px;
+  font-size: var(--vc-font-size-base) - 2px;
 }
 
 hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid var(--vk-border-color-lighter);
+  border-top: 1px solid var(--vc-border-color-lighter);
 }

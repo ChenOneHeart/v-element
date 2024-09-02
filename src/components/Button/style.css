@@ -1,25 +1,25 @@
 /* 定义按钮变量 */
-.vk-button {
-  --vk-button-font-weight: var(--vk-font-weight-primary);
-  --vk-button-border-color: var(--vk-border-color);
-  --vk-button-bg-color: var(--vk-fill-color-blank);
-  --vk-button-text-color: var(--vk-text-color-regular);
-  --vk-button-disabled-text-color: var(--vk-disabled-text-color);
-  --vk-button-disabled-bg-color: var(--vk-fill-color-blank);
-  --vk-button-disabled-border-color: var(--vk-border-color-light);
-  --vk-button-divide-border-color: rgba(255, 255, 255, 0.5);
-  --vk-button-hover-text-color: var(--vk-color-primary);
-  --vk-button-hover-bg-color: var(--vk-color-primary-light-9);
-  --vk-button-hover-border-color: var(--vk-color-primary-light-7);
-  --vk-button-active-text-color: var(--vk-button-hover-text-color);
-  --vk-button-active-border-color: var(--vk-color-primary);
-  --vk-button-active-bg-color: var(--vk-button-hover-bg-color);
-  --vk-button-outline-color: var(--vk-color-primary-light-5);
-  --vk-button-hover-link-text-color: var(--vk-color-info);
-  --vk-button-active-color: var(--vk-text-color-primary);
+.vc-button {
+  --vc-button-font-weight: var(--vc-font-weight-primary);
+  --vc-button-border-color: var(--vc-border-color);
+  --vc-button-bg-color: var(--vc-fill-color-blank);
+  --vc-button-text-color: var(--vc-text-color-regular);
+  --vc-button-disabled-text-color: var(--vc-disabled-text-color);
+  --vc-button-disabled-bg-color: var(--vc-fill-color-blank);
+  --vc-button-disabled-border-color: var(--vc-border-color-light);
+  --vc-button-divide-border-color: rgba(255, 255, 255, 0.5);
+  --vc-button-hover-text-color: var(--vc-color-primary);
+  --vc-button-hover-bg-color: var(--vc-color-primary-light-9);
+  --vc-button-hover-border-color: var(--vc-color-primary-light-7);
+  --vc-button-active-text-color: var(--vc-button-hover-text-color);
+  --vc-button-active-border-color: var(--vc-color-primary);
+  --vc-button-active-bg-color: var(--vc-button-hover-bg-color);
+  --vc-button-outline-color: var(--vc-color-primary-light-5);
+  --vc-button-hover-link-text-color: var(--vc-color-info);
+  --vc-button-active-color: var(--vc-text-color-primary);
 }
 /* 按钮基础样式 */
-.vk-button {
+.vc-button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -27,42 +27,42 @@
   height: 32px;
   white-space: nowrap;
   cursor: pointer;
-  color: var(--vk-button-text-color);
+  color: var(--vc-button-text-color);
   text-align: center;
   box-sizing: border-box;
   outline: none;
   transition: 0.1s;
-  font-weight: var(--vk-button-font-weight);
+  font-weight: var(--vc-button-font-weight);
   -webkit-user-select: none;
   user-select: none;
   vertical-align: middle;
   -webkit-appearance: none;
-  background-color: var(--vk-button-bg-color);
-  border: var(--vk-border);
-  border-radius: var(--vk-border-radius-base);
+  background-color: var(--vc-button-bg-color);
+  border: var(--vc-border);
+  border-radius: var(--vc-border-radius-base);
   & + & {
     margin-left: 12px;
   }
   &:hover,
   &:focus {
-    color: var(--vk-button-hover-text-color);
-    border-color: var(--vk-button-hover-border-color);
-    background-color: var(--vk-button-hover-bg-color);
+    color: var(--vc-button-hover-text-color);
+    border-color: var(--vc-button-hover-border-color);
+    background-color: var(--vc-button-hover-bg-color);
     outline: none;
   }
   &:active {
-    color: var(--vk-button-active-text-color);
-    border-color: var(--vk-button-active-border-color);
-    background-color: var(--vk-button-active-bg-color);
+    color: var(--vc-button-active-text-color);
+    border-color: var(--vc-button-active-border-color);
+    background-color: var(--vc-button-active-bg-color);
     outline: none;
   }
   &.is-plain {
-    --vk-button-hover-text-color: var(--vk-color-primary);
-    --vk-button-hover-bg-color: var(--vk-fill-color-blank);
-    --vk-button-hover-border-color: var(--vk-color-primary);
+    --vc-button-hover-text-color: var(--vc-color-primary);
+    --vc-button-hover-bg-color: var(--vc-fill-color-blank);
+    --vc-button-hover-border-color: var(--vc-color-primary);
   }
   &.is-round {
-    border-radius: var(--vk-border-radius-round);
+    border-radius: var(--vc-border-radius-round);
   }
   &.is-circle {
     border-radius: 50%;
@@ -74,57 +74,57 @@
   &[disabled],
   &[disabled]:hover,
   &[disabled]:focus {
-    color: var(--vk-button-disabled-text-color);
+    color: var(--vc-button-disabled-text-color);
     cursor: not-allowed;
     background-image: none;
-    background-color: var(--vk-button-disabled-bg-color);
-    border-color: var(--vk-button-disabled-border-color);
+    background-color: var(--vc-button-disabled-bg-color);
+    border-color: var(--vc-button-disabled-border-color);
   }
-  [class*="vk-icon"] + span {
+  [class*="vc-icon"] + span {
     margin-left: 6px;
   }
 }
 
 /* 不同类型的按钮样式 */
 @each $val in primary, success, warning, info, danger {
-  .vk-button--$(val) {
-    --vk-button-text-color: var(--vk-color-white);
-    --vk-button-bg-color: var(--vk-color-$(val));
-    --vk-button-border-color: var(--vk-color-$(val));
-    --vk-button-outline-color: var(--vk-color-$(val)-light-5);
-    --vk-button-active-color: var(--vk-color-$(val)-dark-2);
-    --vk-button-hover-text-color: var(--vk-color-white);
-    --vk-button-hover-link-text-color: var(--vk-color-$(val)-light-5);
-    --vk-button-hover-bg-color: var(--vk-color-$(val)-light-3);
-    --vk-button-hover-border-color: var(--vk-color-$(val)-light-3);
-    --vk-button-active-bg-color: var(--vk-color-$(val)-dark-2);
-    --vk-button-active-border-color: var(--vk-color-$(val)-dark-2);
-    --vk-button-disabled-text-color: var(--vk-color-white);
-    --vk-button-disabled-bg-color: var(--vk-color-$(val)-light-5);
-    --vk-button-disabled-border-color: var(--vk-color-$(val)-light-5);
+  .vc-button--$(val) {
+    --vc-button-text-color: var(--vc-color-white);
+    --vc-button-bg-color: var(--vc-color-$(val));
+    --vc-button-border-color: var(--vc-color-$(val));
+    --vc-button-outline-color: var(--vc-color-$(val)-light-5);
+    --vc-button-active-color: var(--vc-color-$(val)-dark-2);
+    --vc-button-hover-text-color: var(--vc-color-white);
+    --vc-button-hover-link-text-color: var(--vc-color-$(val)-light-5);
+    --vc-button-hover-bg-color: var(--vc-color-$(val)-light-3);
+    --vc-button-hover-border-color: var(--vc-color-$(val)-light-3);
+    --vc-button-active-bg-color: var(--vc-color-$(val)-dark-2);
+    --vc-button-active-border-color: var(--vc-color-$(val)-dark-2);
+    --vc-button-disabled-text-color: var(--vc-color-white);
+    --vc-button-disabled-bg-color: var(--vc-color-$(val)-light-5);
+    --vc-button-disabled-border-color: var(--vc-color-$(val)-light-5);
   }
-  .vk-button--$(val).is-plain {
-    --vk-button-text-color: var(--vk-color-$(val));
-    --vk-button-bg-color: var(--vk-color-$(val)-light-9);
-    --vk-button-border-color: var(--vk-color-$(val)-light-5);
-    --vk-button-hover-text-color: var(--vk-color-white);
-    --vk-button-hover-bg-color: var(--vk-color-$(val));
-    --vk-button-hover-border-color: var(--vk-color-$(val));
-    --vk-button-active-text-color: var(--vk-color-white);
+  .vc-button--$(val).is-plain {
+    --vc-button-text-color: var(--vc-color-$(val));
+    --vc-button-bg-color: var(--vc-color-$(val)-light-9);
+    --vc-button-border-color: var(--vc-color-$(val)-light-5);
+    --vc-button-hover-text-color: var(--vc-color-white);
+    --vc-button-hover-bg-color: var(--vc-color-$(val));
+    --vc-button-hover-border-color: var(--vc-color-$(val));
+    --vc-button-active-text-color: var(--vc-color-white);
   } /* TODO disable和is-plain同时使用样式会有问题 */
 
-  .vk-button--large {
-    --vk-button-size: 40px;
-    height: var(--vk-button-size);
+  .vc-button--large {
+    --vc-button-size: 40px;
+    height: var(--vc-button-size);
     padding: 12px 19px;
     font-size: var(--el-font-size-base);
-    border-radius: var(--vk-border-radius-base);
+    border-radius: var(--vc-border-radius-base);
   }
-  .vk-button--small {
-    --vk-button-size: 24px;
-    height: var(--vk-button-size);
+  .vc-button--small {
+    --vc-button-size: 24px;
+    height: var(--vc-button-size);
     padding: 5px 11px;
-    font-size: var(--vk-font-size-extra-small);
-    border-radius: calc(var(--vk-border-radius-base) - 1px);
+    font-size: var(--vc-font-size-extra-small);
+    border-radius: calc(var(--vc-border-radius-base) - 1px);
   }
 }

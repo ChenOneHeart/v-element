@@ -36,8 +36,8 @@ describe("Collapse.vue", () => {
         attachTo: document.body,
       }
     );
-    headers = wrapper.findAll(".vk-collapse-item__header");
-    contents = wrapper.findAll(".vk-collapse-item__wrapper");
+    headers = wrapper.findAll(".vc-collapse-item__header");
+    contents = wrapper.findAll(".vc-collapse-item__wrapper");
     firstHeader = headers[0];
     secondHeader = headers[1];
     thirdHeader = headers[2];

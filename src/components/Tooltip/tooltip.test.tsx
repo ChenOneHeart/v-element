@@ -29,21 +29,21 @@ describe("Tooltip.vue", () => {
       );
       const triggerArea = wrapper.find("#trigger");
       expect(triggerArea.exists()).toBeTruthy();
-      expect(wrapper.find(".vk-tooltip__popper").exists()).toBeFalsy();
+      expect(wrapper.find(".vc-tooltip__popper").exists()).toBeFalsy();
       triggerArea.trigger("click");
       await vi.runAllTimers();
-      expect(wrapper.find(".vk-tooltip__popper").exists()).toBeTruthy();
+      expect(wrapper.find(".vc-tooltip__popper").exists()).toBeTruthy();
       expect(onVisibleChange).toHaveBeenCalledTimes(1);
       expect(onVisibleChange).toHaveBeenCalledWith(true);
       triggerArea.trigger("click");
       // await vi.runAllTimers();
-      // expect(wrapper.find(".vk-tooltip__popper").exists()).toBeFalsy();
+      // expect(wrapper.find(".vc-tooltip__popper").exists()).toBeFalsy();
       // expect(onVisibleChange).toHaveBeenCalledTimes(2);
       // expect(onVisibleChange).toHaveBeenCalledWith(false);
       const outerArea = wrapper.find("#outside");
       outerArea.trigger("click");
       await vi.runAllTimers();
-      expect(wrapper.find(".vk-tooltip__popper").exists()).toBeFalsy();
+      expect(wrapper.find(".vc-tooltip__popper").exists()).toBeFalsy();
       expect(onVisibleChange).toHaveBeenCalled();
       
     });

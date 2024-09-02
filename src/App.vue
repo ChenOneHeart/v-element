@@ -1,5 +1,14 @@
 <template>
   <div>
+    <VcDropdown
+      @visible-change="e => console.log('visiblechange', e)"
+      @select="e => console.log('select', e)"
+      placement="bottom"
+      trigger="click"
+      :menu-options="menuOptions"
+    >
+      <div>这是一个下拉菜单</div>
+    </VcDropdown>
     <Button @click="tooltipRef?.show()" ref="buttonRef">Default Button</Button>
     <Button @click="tooltipRef?.hide()" plain>Plain Button</Button>
     <Button round>Round Button</Button>
@@ -58,7 +67,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, ref, h } from "vue";
 import Button from "./components/Button/Button.vue";
 import Collapse from "./components/Collapse/Collapse.vue";
 import CollapseItem from "./components/Collapse/CollapseItem.vue";
@@ -70,6 +79,9 @@ import {
   type TriggerType,
 } from "./components/Tooltip/types";
 import type { Options } from "@popperjs/core";
+import VcDropdown from "./components/Dropdown/Dropdown.tsx";
+import type { MenuOption } from "./components/Dropdown/types";
+import { log } from "console";
 const trigger = ref<TriggerType>("click");
 const buttonRef = ref<ButtonInstance | null>(null);
 const tooltipRef = ref<TooltipInstance | null>(null);
@@ -78,6 +90,23 @@ const options: Partial<Options> = {
   placement: "right",
   strategy: "fixed",
 };
+const menuOptions = ref<MenuOption[]>([
+  {
+    key: "1",
+    // label: "123",
+    label: h("div", "one node"),
+  },
+  {
+    key: "2",
+    label: "disabled",
+    disabled: true,
+  },
+  {
+    key: "3",
+    label: "last node",
+    divided: true,
+  },
+]);
 onMounted(() => {
   // if (buttonRef.value) {
   //   console.log(buttonRef.value.ref);

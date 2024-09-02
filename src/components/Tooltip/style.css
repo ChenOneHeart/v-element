@@ -1,24 +1,24 @@
-.vk-tooltip {
-  width: 200px;
-  --vk-popper-font-size: 12px;
-  --vk-popper-bg-color: var(--vk-color-success-dark-2);
-  --vk-popper-border-color: var(--vk-text-color-success-dark-2);
-  --vk-popper-border-radius: 4px;
-  --vk-popper-padding: 6px;
+.vc-tooltip {
+  /* width: 200px; */
+  --vc-popper-font-size: 12px;
+  --vc-popper-bg-color: var(--vc-color-success-dark-2);
+  --vc-popper-border-color: var(--vc-text-color-success-dark-2);
+  --vc-popper-border-radius: 4px;
+  --vc-popper-padding: 6px;
   display: inline-block;
-  .vk-tooltip__popper {
-    color: var(--vk-bg-color);
+  .vc-tooltip__popper {
+    color: var(--vc-bg-color);
     position: absolute;
-    border-radius: var(--vk-popper-border-radius);
-    padding: var(--vk-popper-padding);
+    border-radius: var(--vc-popper-border-radius);
+    padding: var(--vc-popper-padding);
     z-index: 2000;
-    font-size: var(--vk-popper-font-size);
+    font-size: var(--vc-popper-font-size);
     line-height: 20px;
     min-width: 10px;
     overflow-wrap: break-word;
     visibility: visible;
-    background: var(--vk-popper-bg-color);
-    border: 1px solid var(--vk-popper-border-color);
+    background: var(--vc-popper-bg-color);
+    border: 1px solid var(--vc-popper-border-color);
   }
 }
 #arrow,
@@ -38,24 +38,24 @@
   content: "";
   transform: rotate(45deg);
 }
-.vk-tooltip__popper[data-popper-placement^="top"] > #arrow {
+.vc-tooltip__popper[data-popper-placement^="top"] > #arrow {
   bottom: -4px;
 }
 
-.vk-tooltip__popper[data-popper-placement^="bottom"] > #arrow {
+.vc-tooltip__popper[data-popper-placement^="bottom"] > #arrow {
   top: -4px;
 }
 
-.vk-tooltip__popper[data-popper-placement^="left"] > #arrow {
+.vc-tooltip__popper[data-popper-placement^="left"] > #arrow {
   right: -4px;
 }
 
-.vk-tooltip__popper[data-popper-placement^="right"] > #arrow {
+.vc-tooltip__popper[data-popper-placement^="right"] > #arrow {
   left: -4px;
 }
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity var(--vk-transition-duration) ease;
+  transition: opacity var(--vc-transition-duration) ease;
 }
 
 .fade-enter-from,

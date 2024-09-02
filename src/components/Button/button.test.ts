@@ -16,7 +16,7 @@ describe("Button.vue", () => {
       }
     })
     console.log(wrapper.html());
-    expect(wrapper.classes()).toContain('vk-button--primary')
+    expect(wrapper.classes()).toContain('vc-button--primary')
     // slot
     expect(wrapper.get('button').text()).toBe('button')
     wrapper.get("button").trigger('click')

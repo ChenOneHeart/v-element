@@ -1,12 +1,12 @@
 <template>
   <div
-    class="vk-collapse-item"
+    class="vc-collapse-item"
     :class="{
       'is-disabled': disabled,
     }"
   >
     <div
-      class="vk-collapse-item__header"
+      class="vc-collapse-item__header"
       :class="{
         'is-disabled': disabled,
         'is-active': isActive,
@@ -18,8 +18,8 @@
       <Icon icon="angle-right" class="header-angle"></Icon>
     </div>
     <Transition @="transitionEvent" name="slide">
-      <div class="vk-collapse-item__wrapper" v-show="isActive">
-        <div class="vk-collapse-item__content" :id="`item-content-${name}`">
+      <div class="vc-collapse-item__wrapper" v-show="isActive">
+        <div class="vc-collapse-item__content" :id="`item-content-${name}`">
           <slot></slot>
         </div>
       </div>
@@ -76,7 +76,7 @@ const transitionEvent: Record<string, (el: HTMLElement) => void> = {
 </script>
 
 <style lang="scss" scoped>
-.vk-collapse-item__header {
+.vc-collapse-item__header {
   font-size: 30px;
   display: flex;
   justify-content: space-between;

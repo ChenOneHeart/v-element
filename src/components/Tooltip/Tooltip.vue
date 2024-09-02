@@ -1,10 +1,10 @@
 <template>
-  <div ref="target" v-on="events" class="vk-tooltip">
-    <div ref="triggerNode" class="vk-tooltip__trigger">
+  <div v-on="outerEvents" ref="popperContainerNode" class="vc-tooltip">
+    <div ref="triggerNode" v-on="events" class="vc-tooltip__trigger">
       <slot />
     </div>
     <Transition :name="transition">
-      <div v-if="isOpen" ref="popperNode" class="vk-tooltip__popper">
+      <div v-if="isOpen" ref="popperNode" class="vc-tooltip__popper">
         <slot name="content">{{ content }}</slot>
         <div id="arrow" data-popper-arrow></div>
       </div>
@@ -33,16 +33,18 @@ const triggerNode = ref<HTMLElement>();
 const popperNode = ref<HTMLElement>();
 const events: Record<string, any> = ref({});
 const outerEvents: Record<string, any> = ref({});
-const target = ref(null);
+const popperContainerNode = ref<HTMLElement>();
 let popperInstance: Instance;
 const openTimes = ref(0),
   closeTimes = ref(0);
-onClickOutside(target, () => {
+onClickOutside(popperContainerNode, () => {
   if (props.trigger === "click" && isOpen.value && !props.manual) {
     isOpen.value = false;
   }
 });
-const togglePopper = () => {
+const togglePopper = (e: Event) => {
+  // console.log(e.target,popperNode.value);
+  // 当前点击的元素是否是popperNode
   isOpen.value = !isOpen.value;
   emits("visible-change", isOpen.value);
 };
@@ -71,7 +73,7 @@ const closeFinal = () => {
 const attachEvent = () => {
   if (props.trigger === "hover") {
     events.value["mouseenter"] = openFinal;
-    events.value["mouseleave"] = closeFinal;
+    outerEvents.value["mouseleave"] = closeFinal;
   } else if (props.trigger === "click") {
     events.value["click"] = togglePopper;
   }
