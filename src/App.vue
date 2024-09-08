@@ -13,7 +13,7 @@
     <Button @click="tooltipRef?.show()" ref="buttonRef">Default Button</Button>
     <Button @click="tooltipRef?.hide()" plain>Plain Button</Button>
     <Button round>Round Button</Button>
-    <Button circle>VK</Button>
+    <Button circle>VC</Button>
     <Button disabled>Disabled Button</Button>
   </div>
   <div class="default">
@@ -82,8 +82,6 @@ import {
 import type { Options } from "@popperjs/core";
 import VcDropdown from "./components/Dropdown/Dropdown.tsx";
 import type { MenuOption } from "./components/Dropdown/types";
-import { log } from "console";
-import Message from "./components/Message/Message.vue";
 import { createMessage } from "./components/Message/methods.ts";
 const trigger = ref<TriggerType>("click");
 const buttonRef = ref<ButtonInstance | null>(null);

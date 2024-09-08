@@ -29,6 +29,7 @@ defineOptions({
   name: "VKButton",
 });
 withDefaults(defineProps<ButtonProps>(), {
+  // type: "primary",
   nativeType: "button",
 });
 const _ref = ref<HTMLButtonElement>();

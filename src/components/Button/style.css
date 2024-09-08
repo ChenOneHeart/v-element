@@ -20,6 +20,7 @@
 }
 /* 按钮基础样式 */
 .vc-button {
+  padding: 6px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -39,6 +40,7 @@
   -webkit-appearance: none;
   background-color: var(--vc-button-bg-color);
   border: var(--vc-border);
+  border-color: var(--vc-button-border-color);
   border-radius: var(--vc-border-radius-base);
   & + & {
     margin-left: 12px;
