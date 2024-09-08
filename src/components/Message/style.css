@@ -1,0 +1,65 @@
+.vc-message {
+  --vc-message-bg-color: var(--vc-color-info-light-9);
+  --vc-message-text-color: var(--vc-text-color-primary);
+  --vc-message-border-color: var(--vc-border-color);
+  --vc-message-close-icon-color: var(--vc-text-color-placeholder);
+  --vc-message-colse-hover-color: var(--vc-text-color-secondary);
+  --vc-message-close-size: 16px;
+  --vc-message-padding: 10px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20px;
+  /* min-height: 30px; */
+  display: flex;
+  align-items: center;
+  /* font-size: 14px; */
+
+  padding: var(--vc-message-padding);
+  border: 1px solid black;
+  border-style: var(--vc-border-style);
+  border-width: var(--vc-border-width);
+  border-color: var(--vc-message-border-color);
+  border-radius: 4px;
+  background-color: var(--vc-message-bg-color);
+  gap: 8px;
+  /* 为什么设置了transition还要给message设置过渡 */
+  transition: top var(--vc-transition-duration),
+    opacity var(--vc-transition-duration),
+    transform var(--vc-transition-duration);
+  .vc-message__content {
+    color: var(--vc-message-text-color);
+  }
+}
+
+.vc-message__close {
+  width: var(--vc-message-close-size);
+  height: var(--vc-message-close-size);
+  line-height: var(--vc-message-close-size);
+  margin-left: 10px;
+  font-size: var(--vc-message-close-size);
+  color: var(--vc-message-close-icon-color);
+  & svg {
+    cursor: pointer;
+  }
+  &:hover {
+    color: var(--vc-message-colse-hover-color);
+  }
+}
+
+@each $val in primary, success, info, warning, danger {
+  .vc-message--$(val) {
+    --vc-message-bg-color: var(--vc-color-$(val)-light-9);
+    --vc-message-border-color: var(--vc-color-$(val)-light-8);
+    --vc-message-text-color: var(--vc-color-$(val));
+    .vc-message__close {
+      --vc-icon-color: var(--vc-color-$(val));
+    }
+  }
+}
+
+.vc-message.fade-up-enter-from,
+.vc-message.fade-up-leave-to {
+  opacity: 0;
+  transform: translate(-50%, -100%);
+}

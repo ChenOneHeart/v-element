@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- <Message message="message" :duration="0" show-close></Message> -->
     <VcDropdown
       @visible-change="e => console.log('visiblechange', e)"
       @select="e => console.log('select', e)"
@@ -82,6 +83,8 @@ import type { Options } from "@popperjs/core";
 import VcDropdown from "./components/Dropdown/Dropdown.tsx";
 import type { MenuOption } from "./components/Dropdown/types";
 import { log } from "console";
+import Message from "./components/Message/Message.vue";
+import { createMessage } from "./components/Message/methods.ts";
 const trigger = ref<TriggerType>("click");
 const buttonRef = ref<ButtonInstance | null>(null);
 const tooltipRef = ref<TooltipInstance | null>(null);
@@ -108,9 +111,24 @@ const menuOptions = ref<MenuOption[]>([
   },
 ]);
 onMounted(() => {
-  // if (buttonRef.value) {
-  //   console.log(buttonRef.value.ref);
-  // }
+  createMessage({
+    type: "primary",
+    message: "hello world",
+    duration: 0,
+    showClose: true,
+  });
+  createMessage({
+    type: "success",
+    message: "123",
+    duration: 0,
+    // showClose: true,
+  });
+  createMessage({
+    type: "danger",
+    message: "123",
+    duration: 0,
+    showClose: true,
+  });
 });
 </script>
 
