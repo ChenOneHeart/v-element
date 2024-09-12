@@ -65,6 +65,16 @@
       </template>
     </Tooltip>
   </div>
+  <Input show-password style="width: 300px" type="text" v-model="inputValue">
+    <!-- <template #prepend>
+      <div>前缀内容</div>
+    </template>
+    <template #append>
+      <div>后缀</div>
+    </template> -->
+  </Input>
+  <div></div>
+  <Input disabled style="width: 200px" type="textarea" v-model="inputValue" />
 </template>
 
 <script setup lang="ts">
@@ -83,6 +93,9 @@ import type { Options } from "@popperjs/core";
 import VcDropdown from "./components/Dropdown/Dropdown.tsx";
 import type { MenuOption } from "./components/Dropdown/types";
 import { createMessage } from "./components/Message/methods.ts";
+import Input from "./components/Input/Input.vue";
+const inputValue = ref("");
+const textAreaValue = ref("");
 const trigger = ref<TriggerType>("click");
 const buttonRef = ref<ButtonInstance | null>(null);
 const tooltipRef = ref<TooltipInstance | null>(null);
@@ -109,24 +122,12 @@ const menuOptions = ref<MenuOption[]>([
   },
 ]);
 onMounted(() => {
-  createMessage({
-    type: "primary",
-    message: "hello world",
-    duration: 0,
-    showClose: true,
-  });
-  createMessage({
-    type: "success",
-    message: "123",
-    duration: 0,
-    // showClose: true,
-  });
-  createMessage({
-    type: "danger",
-    message: "123",
-    duration: 0,
-    showClose: true,
-  });
+  // createMessage({
+  //   type: "primary",
+  //   message: "hello world",
+  //   duration: 0,
+  //   showClose: true,
+  // });
 });
 </script>
 

@@ -1,0 +1,187 @@
+.vc-input {
+  --vc-input-height: var(--vc-component-size);
+  position: rvcative;
+  font-size: var(--vc-font-size-base);
+  display: inline-flex;
+  width: var(--vc-input-width);
+  line-height: var(--vc-input-height);
+  box-sizing: border-box;
+  vertical-align: middle;
+  --vc-input-text-color: var(--vc-text-color-regular);
+  --vc-input-border: var(--vc-border);
+  --vc-input-hover-border: var(--vc-border-color-hover);
+  --vc-input-focus-border: var(--vc-color-primary);
+  --vc-input-transparent-border: 0 0 0 1px transparent inset;
+  --vc-input-border-color: var(--vc-border-color);
+  --vc-input-border-radius: var(--vc-border-radius-base);
+  --vc-input-bg-color: var(--vc-fill-color-blank);
+  --vc-input-icon-color: var(--vc-text-color-placeholder);
+  --vc-input-placeholder-color: var(--vc-text-color-placeholder);
+  --vc-input-hover-border-color: var(--vc-border-color-hover);
+  --vc-input-clear-hover-color: var(--vc-text-color-secondary);
+  --vc-input-focus-border-color: var(--vc-color-primary);
+  --vc-input-width: 100%;
+
+  &.is-disabled {
+    cursor: not-allowed;
+    .vc-input__wrapper {
+      background-color: var(--vc-disabled-bg-color);
+      box-shadow: 0 0 0 1px var(--vc-disabled-border-color) inset;
+    }
+  }
+  & .vc-input__clear,
+  & .vc-input__password {
+    margin-left: 8px;
+    color: var(--vc-input-icon-color);
+    font-size: 14px;
+    cursor: pointer;
+  }
+}
+.vc-input__wrapper {
+  display: inline-flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 11px;
+  background-color: var(--vc-input-bg-color, var(--vc-fill-color-blank));
+  background-image: none;
+  border-radius: var(--vc-input-border-radius, var(--vc-border-radius-base));
+  cursor: text;
+  transition: var(--vc-transition-box-shadow);
+  transform: translateZ(0);
+  box-shadow: 0 0 0 1px var(--vc-input-border-color, var(--vc-border-color))
+    inset;
+  &.is-focus {
+    box-shadow: 0 0 0 1px var(--vc-input-focus-border-color) inset;
+  }
+}
+.vc-input__inner {
+  --vc-input-inner-height: calc(var(--vc-input-height, 32px) - 2px);
+  width: 100%;
+  flex-grow: 1;
+  -webkit-appearance: none;
+  color: var(--vc-input-text-color, var(--vc-text-color-regular));
+  font-size: inherit;
+  height: var(--vc-input-inner-height);
+  line-height: var(--vc-input-inner-height);
+  padding: 0;
+  outline: none;
+  border: none;
+  background: none;
+  box-sizing: border-box;
+  &:focus {
+    outline: none;
+  }
+}
+
+.vc-input__prefix {
+  display: inline-flex;
+  white-space: nowrap;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  height: 100%;
+  text-align: center;
+  color: var(--vc-input-icon-color, var(--vc-text-color-placeholder));
+  transition: all var(--vc-transition-duration);
+  pointer-events: none;
+}
+
+.vc-input__suffix {
+  pointer-events: all;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.vc-input__append,
+.vc-input__prepend {
+  /* background-color: var(--vc-fill-color-light); */
+  /* color: var(--vc-color-info); */
+  position: rvcative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  border-radius: var(--vc-input-border-radius);
+  padding: 0 10px;
+  white-space: nowrap;
+}
+
+.vc-input__prepend {
+  border-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: 1px 0 0 0 var(--vc-input-border-color) inset,
+    0 1px 0 0 var(--vc-input-border-color) inset,
+    0 -1px 0 0 var(--vc-input-border-color) inset;
+}
+.vc-input__append {
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  box-shadow: 0 1px 0 0 var(--vc-input-border-color) inset,
+    0 -1px 0 0 var(--vc-input-border-color) inset,
+    -1px 0 0 0 var(--vc-input-border-color) inset;
+}
+
+.vc-input__prepend + .vc-input__wrapper {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.vc-input__wrapper:has(+ .vc-input__append) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+/* textarea */
+.vc-textarea {
+  --vc-input-text-color: var(--vc-text-color-regular);
+  --vc-input-border: var(--vc-border);
+  --vc-input-hover-border: var(--vc-border-color-hover);
+  --vc-input-focus-border: var(--vc-color-primary);
+  --vc-input-transparent-border: 0 0 0 1px transparent inset;
+  --vc-input-border-color: var(--vc-border-color);
+  --vc-input-border-radius: var(--vc-border-radius-base);
+  --vc-input-bg-color: var(--vc-fill-color-blank);
+  --vc-input-icon-color: var(--vc-text-color-placeholder);
+  --vc-input-placeholder-color: var(--vc-text-color-placeholder);
+  --vc-input-hover-border-color: var(--vc-border-color-hover);
+  --vc-input-clear-hover-color: var(--vc-text-color-secondary);
+  --vc-input-focus-border-color: var(--vc-color-primary);
+  --vc-input-width: 100%;
+  position: rvcative;
+  display: inline-block;
+  width: 100%;
+  vertical-align: bottom;
+  font-size: var(--vc-font-size-base);
+}
+.vc-textarea__inner {
+  position: rvcative;
+  display: block;
+  resize: vertical;
+  padding: 5px 11px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: inherit;
+  font-family: inherit;
+  color: var(--vc-input-text-color, var(--vc-text-color-regular));
+  background-color: var(--vc-input-bg-color, var(--vc-fill-color-blank));
+  background-image: none;
+  -webkit-appearance: none;
+  box-shadow: 0 0 0 1px var(--vc-input-border-color, var(--vc-border-color))
+    inset;
+  border-radius: var(--vc-input-border-radius, var(--vc-border-radius-base));
+  transition: var(--vc-transition-box-shadow);
+  border: none;
+  &:focus,
+  &:hover {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--vc-input-focus-border-color) inset;
+  }
+}
+
+.vc-textarea.is-disabled .vc-textarea__inner {
+  background-color: var(--vc-disabled-bg-color);
+  box-shadow: 0 0 0 1px var(--vc-disabled-border-color) inset;
+  color: var(--vc-disabled-text-color);
+  cursor: not-allowed;
+}

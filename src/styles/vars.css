@@ -11,11 +11,10 @@
   );
 
   @each $val, $color in var(--colors) {
+    /* --vc-color-(primary | success | warning | danger | error | info)  */
     --vc-color-$(val): $color;
     @for $i from 3 to 9 by 2 {
-      /* @if $i / 2 > 1 { */
       --vc-color-$(val)-light-$(i): mix(#fff, $(color), .$(i));
-      /* } */
     }
     --vc-color-$(val)-light-8: mix(#fff, $(color), 0.8);
     --vc-color-$(val)-dark-2: mix(#fff, $(color), 0.2);
@@ -79,4 +78,10 @@
   --vc-box-shadow-lighter: 0px 0px 6px rgba(0, 0, 0, 0.12);
   --vc-box-shadow-dark: 0px 16px 48px 16px rgba(0, 0, 0, 0.08),
     0px 12px 32px rgba(0, 0, 0, 0.12), 0px 8px 16px -8px rgba(0, 0, 0, 0.16);
+  /* 组件样式 */
+  --vc-component-size: 32px;
+  --vc-component-size-small: 24px;
+  --vc-component-size-large: 40px;
+  --vc-input-width: 100%;
+  --vc-input-height: var(--vc-component-size);
 }
