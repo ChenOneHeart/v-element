@@ -1,0 +1,132 @@
+.vc-switch {
+  --vc-switch-on-color: var(--vc-color-primary);
+  --vc-switch-off-color: var(--vc-border-color);
+  /* --vc-switch-border-color: var(--vc-color-primary); */
+  display: inline-flex;
+  align-items: center;
+  position: rvcative;
+  font-size: 14px;
+  line-height: 20px;
+  height: 32px;
+  vertical-align: middle;
+  &.is-checked .vc-switch__core {
+    border-color: var(--vc-switch-border-color, var(--vc-switch-on-color));
+    background-color: var(--vc-switch-on-color);
+    .vc-switch__inner {
+      padding: 0 18px 0 4px;
+    }
+    .vc-switch__action {
+      left: calc(100% - 17px);
+      color: var(--vc-switch-on-color);
+    }
+  }
+}
+.vc-switch__input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  margin: 0;
+  /* focus对点击和tab键都生效，focus-visible仅对tab生效 */
+  &:focus-visible {
+    & ~ .vc-switch__core {
+      outline: 2px solid var(--vc-switch-on-color);
+      outline-offset: 1px;
+    }
+  }
+}
+.vc-switch__core {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  min-width: 40px;
+  height: 20px;
+  border: 1px solid var(--vc-switch-border-color, var(--vc-switch-off-color));
+  outline: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+  background: var(--vc-switch-off-color);
+  cursor: pointer;
+  transition: border-color var(--vc-transition-duration),
+    background-color var(--vc-transition-duration);
+  .vc-switch__action {
+    position: absolute;
+    left: 1px;
+    border-radius: var(--vc-border-radius-circle);
+    transition: all var(--vc-transition-duration);
+    width: 16px;
+    height: 16px;
+    background-color: var(--vc-color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--vc-switch-off-color);
+  }
+  .vc-switch__inner {
+    width: 100%;
+    transition: all var(--vc-transition-duration);
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 4px 0 18px;
+    .is-text {
+      font-size: 12px;
+      color: var(--vc-color-white);
+      -webkit-user-select: none;
+      user-select: none;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+.vc-switch--large {
+  font-size: 14px;
+  line-height: 24px;
+  height: 40px;
+  &.is-checked .vc-switch__core {
+    .vc-switch__action {
+      left: calc(100% - 21px);
+    }
+  }
+  .vc-switch__core {
+    min-width: 50px;
+    height: 24px;
+    border-radius: 12px;
+    .vc-switch__action {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .vc-switch-label {
+    height: 24px;
+    font-size: 14px;
+  }
+}
+
+.vc-switch--small {
+  font-size: 12px;
+  line-height: 16px;
+  height: 24px;
+  &.is-checked .vc-switch__core {
+    .vc-switch__action {
+      left: calc(100% - 13px);
+    }
+  }
+  .vc-switch__core {
+    min-width: 30px;
+    height: 16px;
+    border-radius: 8px;
+    .vc-switch__action {
+      width: 12px;
+      height: 12px;
+    }
+  }
+  .vc-switch-label {
+    height: 16px;
+    font-size: 12px;
+  }
+}

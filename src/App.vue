@@ -66,18 +66,33 @@
     </Tooltip>
   </div>
   <Input show-password style="width: 300px" type="text" v-model="inputValue">
-    <!-- <template #prepend>
-      <div>前缀内容</div>
-    </template>
-    <template #append>
-      <div>后缀</div>
-    </template> -->
   </Input>
   <div></div>
   <Input disabled style="width: 200px" type="textarea" v-model="inputValue" />
+  <VcSwitch
+    active-text="是"
+    inactive-text="否"
+    size="large"
+    v-model="switchValue"
+  ></VcSwitch>
+  <VcSwitch
+    active-text="是"
+    inactive-text="否"
+    v-model="switchValue"
+  ></VcSwitch>
+  <VcSwitch
+    @change="e => console.log(e)"
+    active-text="是"
+    inactive-text="否"
+    active-value="123"
+    inactive-value="456"
+    size="small"
+    v-model="switchValue"
+  ></VcSwitch>
 </template>
 
 <script setup lang="ts">
+import VcSwitch from "./components/Switch/Switch.vue";
 import { onMounted, ref, h } from "vue";
 import Button from "./components/Button/Button.vue";
 import Collapse from "./components/Collapse/Collapse.vue";
@@ -94,6 +109,7 @@ import VcDropdown from "./components/Dropdown/Dropdown.tsx";
 import type { MenuOption } from "./components/Dropdown/types";
 import { createMessage } from "./components/Message/methods.ts";
 import Input from "./components/Input/Input.vue";
+const switchValue = ref("123");
 const inputValue = ref("");
 const textAreaValue = ref("");
 const trigger = ref<TriggerType>("click");
