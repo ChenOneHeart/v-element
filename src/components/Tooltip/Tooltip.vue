@@ -41,6 +41,9 @@ onClickOutside(popperContainerNode, () => {
   if (props.trigger === "click" && isOpen.value && !props.manual) {
     isOpen.value = false;
   }
+  if (isOpen.value) {
+    emits("click-outside", true);
+  }
 });
 const togglePopper = (e: Event) => {
   // console.log(e.target,popperNode.value);
@@ -49,14 +52,12 @@ const togglePopper = (e: Event) => {
   emits("visible-change", isOpen.value);
 };
 const open = () => {
-  console.log("openTimes:", openTimes.value);
   isOpen.value = true;
   emits("visible-change", isOpen.value);
 };
 
 const close = () => {
   openTimes.value++;
-  console.log("closeTimes", closeTimes.value);
   isOpen.value = false;
   emits("visible-change", isOpen.value);
 };

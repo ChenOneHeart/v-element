@@ -1,14 +1,12 @@
-import { defineComponent } from "vue";
 
-const RenderVnode = defineComponent({
+export default {
   props: {
     vNode: {
       type: [String, Object],
       required: true,
     }
   },
-  setup(props) {
+  setup(props: any) {
     return () => props.vNode
   },
-})
-export default RenderVnode
+}

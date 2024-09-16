@@ -7,6 +7,12 @@
   fill: currentColor;
   color: var(--vc-icon-color);
   font-size: inherit;
+  height: 1em;
+  width: 1em;
+  & svg {
+    height: 1em;
+    width: 1em;
+  }
 }
 @each $val in primary, success, info, warning, danger {
   .vc-icon--$(val) {

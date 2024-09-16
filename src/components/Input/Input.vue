@@ -11,8 +11,8 @@
       'is-append': $slots.append,
       'is-prefix': $slots.prefix,
       'is-suffix': $slots.suffix,
+      'is-focus': isFocus,
     }"
-    tabindex="1"
   >
     <template v-if="type !== 'textarea'">
       <div v-if="$slots.prepend" class="vc-input__prepend">
@@ -104,7 +104,6 @@
 import {
   computed,
   type ModelRef,
-  onMounted,
   type Ref,
   ref,
   useAttrs,
@@ -179,7 +178,7 @@ watch(model, val => {
 //   if (!inputRef.value) return;
 //   inputRef.value.setAttribute("type", nVal ? "password" : props.type);
 // });
-defineExpose<InputInstance>({
+defineExpose({
   ref: inputRef,
   blur: handleBlur,
   focus: handleFocus,

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <title>Document</title>
+    <style></style>
+    <style>
+      * {
+        position: relative;
+      }
+      .is-active:before {
+        white-space: pre;
+        counter-reset: progress var(--floor);
+        content: "当前层数：" counter(progress) "\Apadding:"attr(padding) ";\Amargin:"attr(
+            margin
+          )
+          ";\A color:"attr(color) ";\A width:"attr(width) ";\A height:"attr(
+            height
+          ) ";";
+        position: fixed;
+        top: 0;
+        right: 0;
+        line-height: 30px;
+        /* text-align: center; */
+        font-weight: 600;
+        padding: 5px 10px;
+        width: 300px;
+        height: 300px;
+        z-index: 1000;
+        background-color: rgba(255, 255, 255, 0.9);
+        outline: 2px solid;
+      }
+      .is-active {
+        outline: 2px solid green;
+        background-color: rgba(222, 222, 222, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <button popovertarget="imgBook">点击显示图片</button>
+    <img id="imgBook" popover src="https://www.zhangxinxu.com/study/202312/book1.jpg" />
+    <div class="box2">
+      第二层
+      <div class="box3">
+        &nbsp;&nbsp;第三层
+        <div>
+          第四层
+          <h3 style="padding: 20px">
+            第五层
+            <a href="#">第六层</a>
+          </h3>
+        </div>
+      </div>
+      <div class="box3">&nbsp;&nbsp;第三层</div>
+      <div class="box3">&nbsp;&nbsp;第三层</div>
+    </div>
+    <div class="box2" style="margin: 20px">
+      第二层
+      <div class="box3">&nbsp;&nbsp;第三层</div>
+      <div class="box3">&nbsp;&nbsp;第三层</div>
+      <div class="box3">&nbsp;&nbsp;第三层</div>
+    </div>
+    <div class="box2">
+      第二层
+      <div class="box3">&nbsp;&nbsp;第三层</div>
+      <div class="box3">&nbsp;&nbsp;第三层</div>
+      <div class="box3">&nbsp;&nbsp;第三层</div>
+    </div>
+    <script>
+      // 从body开始算起，body为第一层，body的子元素为第二层，以此类推
+      (function setFloor() {
+        let style = `* {
+        position: relative;
+      }
+      .is-active:before {
+        white-space: pre;
+        counter-reset: progress var(--floor);
+        content: "当前层数：" counter(progress) "\Apadding:"attr(padding) ";\Amargin:"attr(
+            margin
+          )
+          ";\A color:"attr(color) ";\A width:"attr(width) ";\A height:"attr(
+            height
+          ) ";";
+        position: fixed;
+        top: 0;
+        right: 0;
+        line-height: 30px;
+        /* text-align: center; */
+        font-weight: 600;
+        padding: 5px 10px;
+        width: 300px;
+        height: 300px;
+        z-index: 1000;
+        background-color: rgba(255, 255, 255, 0.9);
+        outline: 2px solid;
+      }
+      .is-active {
+        outline: 2px solid green;
+        background-color: rgba(222, 222, 222, 0.5);
+      }`;
+        style = style.split("\A").join("\\A");
+        var styleElement = document.createElement("style");
+        styleElement.innerHTML = style;
+        document.head.appendChild(styleElement);
+        function getFloor(ele, floor = 1) {
+          if (!ele) return -1;
+          if (ele === document.body) {
+            return 1;
+          } else {
+            if (ele.parentNode !== document.body) {
+              return getFloor(ele.parentNode, ++floor);
+            } else {
+              return floor + 1;
+            }
+          }
+        }
+        function hoverHandler(e) {
+          console.log(e.target);
+          e.target.classList.add("is-active");
+        }
+        function removeHoverHandler(e) {
+          e.target.classList.remove("is-active");
+        }
+        document.addEventListener("mouseover", hoverHandler);
+        document.addEventListener("mouseout", removeHoverHandler);
+        function traverseDOM(element, callback) {
+          callback(element);
+          element = element.firstElementChild;
+          while (element) {
+            traverseDOM(element, callback);
+            element = element.nextElementSibling;
+          }
+        }
+        traverseDOM(document.body, function (element) {
+          const floor = getFloor(element);
+          element.style.setProperty("--floor", floor);
+          element.setAttribute("padding", getComputedStyle(element).padding);
+          element.setAttribute("margin", getComputedStyle(element).margin);
+          element.setAttribute(
+            "color",
+            getComputedStyle(element).color || null
+          );
+          element.setAttribute(
+            "height",
+            getComputedStyle(element).height || null
+          );
+          element.setAttribute(
+            "width",
+            getComputedStyle(element).width || null
+          );
+        });
+      })();
+    </script>
+  </body>
+</html>

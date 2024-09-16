@@ -1,0 +1,75 @@
+.vc-select {
+  --vc-select-item-hover-bg-color: var(--vc-fill-color-light);
+  --vc-select-item-font-size: var(--vc-font-size-base);
+  --vc-select-item-selected-font-color: var(--vc-color-primary);
+  --vc-select-item-disabled-font-color: var(--vc-text-color-placeholder);
+  --vc-select-input-focus-border-color: var(--vc-color-primary);
+}
+.vc-select {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 32px;
+  .vc-tooltip .vc-tooltip__popper {
+    padding: 0;
+  }
+  .vc-input.is-focus .vc-input__wrapper {
+    box-shadow: 0 0 0 1px var(--vc-select-input-focus-border-color) inset !important;
+  }
+  .vc-input {
+    .header-angle {
+      cursor: pointer;
+      color: var(--vc-text-color-placeholder);
+      transition: transform var(--vc-transition-duration);
+      &.is-active {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .vc-input__inner {
+    cursor: pointer;
+  }
+  .vc-select__nodata,
+  .vc-select__loading {
+    padding: 10px 0;
+    margin: 0;
+    text-align: center;
+    color: var(--vc-text-color-secondary);
+    font-size: var(--vc-select-font-size);
+  }
+  .vc-select__menu {
+    list-style: none;
+    margin: 6px 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .vc-select__menu-item {
+    margin: 0;
+    font-size: var(--vc-select-item-font-size);
+    padding: 0 32px 0 20px;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--vc-text-color-regular);
+    height: 34px;
+    line-height: 34px;
+    box-sizing: border-box;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--vc-select-item-hover-bg-color);
+      color: var();
+    }
+    &.is-selected {
+      color: var(--vc-select-item-selected-font-color);
+      font-weight: 700;
+    }
+    &.is-highlight {
+      background-color: var(--vc-select-item-hover-bg-color);
+    }
+    &.is-disabled {
+      color: var(--vc-text-color-placeholder);
+      cursor: not-allowed;
+      background-color: unset;
+    }
+  }
+}

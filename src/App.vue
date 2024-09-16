@@ -1,99 +1,33 @@
 <template>
-  <div>
-    <!-- <Message message="message" :duration="0" show-close></Message> -->
-    <VcDropdown
-      @visible-change="e => console.log('visiblechange', e)"
-      @select="e => console.log('select', e)"
-      placement="bottom"
-      trigger="click"
-      :menu-options="menuOptions"
-    >
-      <div>这是一个下拉菜单</div>
-    </VcDropdown>
-    <Button @click="tooltipRef?.show()" ref="buttonRef">Default Button</Button>
-    <Button @click="tooltipRef?.hide()" plain>Plain Button</Button>
-    <Button round>Round Button</Button>
-    <Button circle>VC</Button>
-    <Button disabled>Disabled Button</Button>
-  </div>
-  <div class="default">
-    <Button type="primary">Test Button</Button>
-    <Button type="success">success Button</Button>
-    <Button type="info">info Button</Button>
-    <Button loading type="warning">warning Button</Button>
-    <Button icon="arrow-up" type="danger">danger Button</Button>
-  </div>
-  <div class="plain">
-    <Button plain type="primary">Test Button</Button>
-    <Button plain type="success">success Button</Button>
-    <Button plain type="info">info Button</Button>
-    <Button plain type="warning">warning Button</Button>
-    <Button plain disabled type="danger">danger Button</Button>
-  </div>
-  <div class="size">
-    <Button size="large" type="primary">Test Button</Button>
-    <Button size="small" type="primary">Test Button</Button>
-  </div>
-  <Collapse accordion v-model="openedValue">
-    <CollapseItem name="a" title="a">
-      <template #title>
-        <div>a的标题</div>
-      </template>
-      <div>a元素的内容</div>
-      <div>aaaaa content</div>
-    </CollapseItem>
-    <CollapseItem name="b" title="b">
-      <div>b元素的内容</div>
-      <div>this is b context</div>
-    </CollapseItem>
-    <CollapseItem name="c" title="c" disabled> this is c context </CollapseItem>
-    {{ openedValue }}
-  </Collapse>
-  <Icon icon="arrow-up" type="primary" size="2xl" />
-  <div style="margin-left: 200px">
-    <Tooltip
-      :show-delay="100"
-      :hide-delay="100"
-      placement="top"
-      :trigger="trigger"
-      ref="tooltipRef"
-      :popper-options="options"
-    >
-      <img src="./assets/logo.svg" width="200" height="200" />
-      <template #content>
-        <span>content</span>
-      </template>
-    </Tooltip>
-  </div>
-  <Input show-password style="width: 300px" type="text" v-model="inputValue">
-  </Input>
-  <div></div>
-  <Input disabled style="width: 200px" type="textarea" v-model="inputValue" />
-  <VcSwitch
-    active-text="是"
-    inactive-text="否"
-    size="large"
-    v-model="switchValue"
-  ></VcSwitch>
-  <VcSwitch
-    active-text="是"
-    inactive-text="否"
-    v-model="switchValue"
-  ></VcSwitch>
-  <VcSwitch
-    @change="e => console.log(e)"
-    active-text="是"
-    inactive-text="否"
-    active-value="123"
-    inactive-value="456"
-    size="small"
-    v-model="switchValue"
-  ></VcSwitch>
+  <Input v-model="inputValue" />
+  <Test></Test>
+
+  <Select
+    @change="handleSelectChange"
+    style="width: 300px"
+    clearable
+    placeholder="请输入你的文字"
+    :options="selectOptions2"
+    v-model="selectValue2"
+  >
+  </Select>
+  <Select
+    @change="handleSelectChange"
+    filterable
+    style="width: 300px"
+    clearable
+    remote
+    :remote-method="getOptions"
+    :options="selectOptions"
+    v-model="selectValue"
+  >
+  </Select>
+  <div style="height: 2000px"></div>
 </template>
 
 <script setup lang="ts">
 import VcSwitch from "./components/Switch/Switch.vue";
-import { onMounted, ref, h } from "vue";
+import { onMounted, ref, h, watch, handleError } from "vue";
 import Button from "./components/Button/Button.vue";
 import Collapse from "./components/Collapse/Collapse.vue";
 import CollapseItem from "./components/Collapse/CollapseItem.vue";
@@ -109,9 +43,64 @@ import VcDropdown from "./components/Dropdown/Dropdown.tsx";
 import type { MenuOption } from "./components/Dropdown/types";
 import { createMessage } from "./components/Message/methods.ts";
 import Input from "./components/Input/Input.vue";
+import Select from "./components/Select/Select.vue";
+import type { SelectOption } from "./components/Select/type.ts";
+import Test from "./components/Common/Test.vue";
 const switchValue = ref("123");
 const inputValue = ref("");
+const selectValue2 = ref("");
 const textAreaValue = ref("");
+const labelRenderFun = (option: SelectOption) => {
+  return h("div", { className: "my-render-label" }, [
+    h("span", "你好"),
+    h("span", option.label),
+  ]);
+};
+const getOptions = (searchValue: string) => {
+  return new Promise<SelectOption[]>((resolve, reject) => {
+    setTimeout(() => {
+      let option = selectOptions.filter(option =>
+        option.label.includes(searchValue)
+      );
+      resolve(option);
+    }, 1000);
+  });
+};
+
+let selectOptions = [
+  {
+    label: "text1",
+    value: "1",
+  },
+  {
+    label: "template",
+    value: "12",
+  },
+  {
+    label: "memory2",
+    value: "2",
+    disabled: true,
+  },
+  {
+    label: "handler3",
+    value: "3",
+  },
+];
+const selectOptions2 = [
+  {
+    label: "baidu",
+    value: "a",
+  },
+  {
+    label: "tencent",
+    value: "b",
+  },
+  {
+    label: "alibaba",
+    value: "c",
+  },
+];
+const selectValue = ref("1");
 const trigger = ref<TriggerType>("click");
 const buttonRef = ref<ButtonInstance | null>(null);
 const tooltipRef = ref<TooltipInstance | null>(null);
@@ -119,6 +108,9 @@ const openedValue = ref(["a"]);
 const options: Partial<Options> = {
   placement: "right",
   strategy: "fixed",
+};
+const handleSelectChange = e => {
+  console.log(e);
 };
 const menuOptions = ref<MenuOption[]>([
   {
@@ -137,14 +129,7 @@ const menuOptions = ref<MenuOption[]>([
     divided: true,
   },
 ]);
-onMounted(() => {
-  // createMessage({
-  //   type: "primary",
-  //   message: "hello world",
-  //   duration: 0,
-  //   showClose: true,
-  // });
-});
+onMounted(() => {});
 </script>
 
 <style lang="scss" scoped></style>
