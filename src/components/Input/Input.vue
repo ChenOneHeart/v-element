@@ -34,6 +34,7 @@
           :autocomplete="autocomplete"
           :autofocus="autofocus"
           :form="form"
+          @input="handleInput"
           @change="handleChange"
           @focus="handleFocus"
           @blur="handleBlur"
@@ -87,6 +88,7 @@
         v-model="model"
         :disabled="disabled"
         ref="inputRef"
+        @input="handleInput"
         @change="handleChange"
         @focus="handleFocus"
         @blur="handleBlur"
@@ -110,8 +112,13 @@ import {
   watch,
   nextTick,
 } from "vue";
-import type { InputEmits, InputInstance, InputProps } from "./types";
+import type { InputEmits, InputProps } from "./types";
 import Icon from "../Icon/Icon.vue";
+import useFormItem from "../Form/useFormItem";
+const { formItemContext } = useFormItem();
+const runValidation = (trigger?: string) => {
+  formItemContext?.validate(trigger).catch(e => console.log(e.errors));
+};
 type TargetElement = HTMLInputElement | HTMLTextAreaElement;
 defineOptions({
   name: "VcInput",
@@ -151,14 +158,21 @@ const togglePasswordVisible = () => {
 const handleBlur = (e: FocusEvent) => {
   isFocus.value = false;
   emits("blur", e);
+  runValidation("blur");
 };
 const handleFocus = (e: FocusEvent) => {
   isFocus.value = true;
   emits("focus", e);
 };
 
+const handleInput = () => {
+  emits("input", model.value);
+  runValidation("input");
+};
+
 const handleChange = (e: Event) => {
   emits("change", (e.target as TargetElement).value);
+  runValidation("change");
 };
 const keepFocus = async () => {
   await nextTick();
@@ -166,14 +180,10 @@ const keepFocus = async () => {
 };
 const clear = () => {
   model.value = "";
-  console.log(model.value);
   emits("clear");
   emits("input", "");
   emits("change", "");
 };
-watch(model, val => {
-  emits("input", val!);
-});
 
 //   if (!inputRef.value) return;
 //   inputRef.value.setAttribute("type", nVal ? "password" : props.type);

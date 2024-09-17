@@ -1,0 +1,50 @@
+.vc-form {
+  --vc-form-label-font-size: var(--vc-font-size-base);
+  ---vc-form-content-font-size: var(--vc-font-size-base);
+}
+
+.vc-form-item {
+  display: flex;
+  margin-bottom: 18px;
+  .vc-form-item__label {
+    width: 150px;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex: 0 0 auto;
+    font-size: var(--vc-form-label-font-size);
+    color: var(--vc-text-color-regular);
+    height: 32px;
+    line-height: 32px;
+    padding: 0 12px 0 0;
+    box-sizing: border-box;
+  }
+  .vc-form-item__content {
+    display: inline-flex;
+    align-items: center;
+    flex: 1;
+    font-size: var(--vc-form-label-font-size);
+    color: var(--vc-text-color-regular);
+    height: 32px;
+    line-height: 32px;
+    box-sizing: border-box;
+    position: relative;
+  }
+  .vc-form-item__error-msg {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding-top: 2px;
+    color: var(--vc-color-danger);
+    line-height: 1;
+    font-size: var(--vc-font-size-extra-small);
+  }
+}
+.vc-form-item.is-error .vc-input__wrapper {
+  box-shadow: 0 0 0 1px var(--vc-color-danger) inset;
+}
+.vc-form-item.is-required > .vc-form-item__label::before {
+  content: "*";
+  color: var(--vc-color-danger);
+  margin-right: 4px;
+}

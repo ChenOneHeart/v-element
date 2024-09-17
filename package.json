@@ -25,6 +25,7 @@
     "@vitepress-demo-preview/component": "^2.3.2",
     "@vitepress-demo-preview/plugin": "^1.2.3",
     "@vueuse/core": "^11.0.3",
+    "async-validator": "^4.2.5",
     "axios": "^1.7.5",
     "lodash-es": "^4.17.21",
     "vue": "^3.4.29"

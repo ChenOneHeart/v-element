@@ -1,135 +1,84 @@
 <template>
-  <Input v-model="inputValue" />
-  <Test></Test>
-
-  <Select
-    @change="handleSelectChange"
-    style="width: 300px"
-    clearable
-    placeholder="请输入你的文字"
-    :options="selectOptions2"
-    v-model="selectValue2"
-  >
-  </Select>
-  <Select
-    @change="handleSelectChange"
-    filterable
-    style="width: 300px"
-    clearable
-    remote
-    :remote-method="getOptions"
-    :options="selectOptions"
-    v-model="selectValue"
-  >
-  </Select>
-  <div style="height: 2000px"></div>
+  <div class="">
+    <vc-form
+      style="max-width: 600px"
+      ref="formRef"
+      :model="model"
+      :rules="rules"
+    >
+      <vc-form-item label="邮箱：" prop="email">
+        <vc-input v-model="model.email"></vc-input>
+      </vc-form-item>
+      <vc-form-item label="密码：" prop="password">
+        <vc-input v-model="model.password"></vc-input>
+      </vc-form-item>
+      <vc-form-item label="test value" prop="confirmPwd">
+        <vc-input v-model="model.confirmPwd"></vc-input>
+      </vc-form-item>
+      <vc-form-item>
+        <button @click.prevent="submit">表单验证</button>
+        <button @click.prevent="reset">表单验证重置</button>
+        <button @click.prevent="clear">表单重置</button>
+      </vc-form-item>
+    </vc-form>
+  </div>
 </template>
 
 <script setup lang="ts">
-import VcSwitch from "./components/Switch/Switch.vue";
-import { onMounted, ref, h, watch, handleError } from "vue";
-import Button from "./components/Button/Button.vue";
-import Collapse from "./components/Collapse/Collapse.vue";
-import CollapseItem from "./components/Collapse/CollapseItem.vue";
-import Icon from "./components/Icon/Icon.vue";
-import Tooltip from "./components/Tooltip/Tooltip.vue";
-import type { ButtonInstance } from "./components/Button/types";
-import {
-  type TooltipInstance,
-  type TriggerType,
-} from "./components/Tooltip/types";
-import type { Options } from "@popperjs/core";
-import VcDropdown from "./components/Dropdown/Dropdown.tsx";
-import type { MenuOption } from "./components/Dropdown/types";
-import { createMessage } from "./components/Message/methods.ts";
-import Input from "./components/Input/Input.vue";
-import Select from "./components/Select/Select.vue";
-import type { SelectOption } from "./components/Select/type.ts";
-import Test from "./components/Common/Test.vue";
-const switchValue = ref("123");
-const inputValue = ref("");
-const selectValue2 = ref("");
-const textAreaValue = ref("");
-const labelRenderFun = (option: SelectOption) => {
-  return h("div", { className: "my-render-label" }, [
-    h("span", "你好"),
-    h("span", option.label),
-  ]);
+import { reactive, ref, type Ref } from "vue";
+import VcForm from "./components/Form/Form.vue";
+import VcFormItem from "./components/Form/FormItem.vue";
+import VcInput from "./components/Input/Input.vue";
+import type { FormInstance } from "./components/Form/type";
+const formRef = ref() as Ref<FormInstance>;
+const model = reactive({
+  email: "123@qq.com",
+  password: "",
+  confirmPwd: "",
+});
+const submit = async () => {
+  try {
+    await formRef.value!.validate();
+    console.log("passed");
+  } catch (error) {
+    console.log("the error", error);
+  }
 };
-const getOptions = (searchValue: string) => {
-  return new Promise<SelectOption[]>((resolve, reject) => {
-    setTimeout(() => {
-      let option = selectOptions.filter(option =>
-        option.label.includes(searchValue)
-      );
-      resolve(option);
-    }, 1000);
-  });
+const reset = () => {
+  formRef.value.clearValidate();
 };
-
-let selectOptions = [
-  {
-    label: "text1",
-    value: "1",
-  },
-  {
-    label: "template",
-    value: "12",
-  },
-  {
-    label: "memory2",
-    value: "2",
-    disabled: true,
-  },
-  {
-    label: "handler3",
-    value: "3",
-  },
-];
-const selectOptions2 = [
-  {
-    label: "baidu",
-    value: "a",
-  },
-  {
-    label: "tencent",
-    value: "b",
-  },
-  {
-    label: "alibaba",
-    value: "c",
-  },
-];
-const selectValue = ref("1");
-const trigger = ref<TriggerType>("click");
-const buttonRef = ref<ButtonInstance | null>(null);
-const tooltipRef = ref<TooltipInstance | null>(null);
-const openedValue = ref(["a"]);
-const options: Partial<Options> = {
-  placement: "right",
-  strategy: "fixed",
+const clear = () => {
+  formRef.value.resetFields();
 };
-const handleSelectChange = e => {
-  console.log(e);
+const rules = {
+  email: [
+    {
+      required: true,
+      type: "email",
+      trigger: "blur",
+    },
+  ],
+  password: [
+    {
+      required: true,
+      type: "string",
+      trigger: "blur",
+      min: 3,
+      max: 5,
+    },
+  ],
+  confirmPwd: [
+    {
+      required: true,
+      type: "string",
+      trigger: "blur",
+    },
+    {
+      validator: (rule: any, value: any) => value === model.password,
+      trigger: "blur",
+      message: "两个密码必须相同",
+    },
+  ],
 };
-const menuOptions = ref<MenuOption[]>([
-  {
-    key: "1",
-    // label: "123",
-    label: h("div", "one node"),
-  },
-  {
-    key: "2",
-    label: "disabled",
-    disabled: true,
-  },
-  {
-    key: "3",
-    label: "last node",
-    divided: true,
-  },
-]);
-onMounted(() => {});
 </script>
-
 <style lang="scss" scoped></style>
