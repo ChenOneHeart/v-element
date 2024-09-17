@@ -98,9 +98,10 @@ const resetField = () => {
     model[props.prop] = initialValue;
   }
 };
-const isRequired = () => {
+const isRequired = computed(() => {
+  console.log(itemRules.value);
   return itemRules.value.some((rule: any) => rule.required);
-};
+});
 const validate = async (trigger?: string) => {
   const modelName = props.prop;
   const triggeredRules = getTriggerRules(trigger);
