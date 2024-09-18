@@ -14,7 +14,7 @@ import {
 } from "./types";
 
 defineOptions({
-  name: "VKCollapse",
+  name: "VcCollapse",
 });
 
 const props = defineProps<CollpaseProps>();

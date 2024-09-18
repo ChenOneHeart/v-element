@@ -26,7 +26,7 @@ import { ref } from "vue";
 import type { ButtonProps } from "./types";
 import Icon from "../Icon/Icon.vue";
 defineOptions({
-  name: "VKButton",
+  name: "VcButton",
 });
 withDefaults(defineProps<ButtonProps>(), {
   // type: "primary",

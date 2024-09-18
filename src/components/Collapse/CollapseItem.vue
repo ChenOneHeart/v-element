@@ -32,7 +32,7 @@ import { computed, inject } from "vue";
 import { collapseContextKey, type CollapseItemProps } from "./types";
 import Icon from "../Icon/Icon.vue";
 defineOptions({
-  name: "VKCollapseItem",
+  name: "VcCollapseItem",
 });
 const props = defineProps<CollapseItemProps>();
 const collapseContext = inject(collapseContextKey);

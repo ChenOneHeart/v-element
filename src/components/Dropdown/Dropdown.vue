@@ -49,7 +49,7 @@ import type {
 } from "./types";
 import RenderVnode from "../Common/RenderVnode";
 defineOptions({
-  name: "VCDropdown",
+  name: "VcDropdown",
 });
 const props = withDefaults(defineProps<DropdownProps>(), {
   placement: "bottom",

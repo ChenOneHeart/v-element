@@ -21,6 +21,8 @@
         <button @click.prevent="clear">表单重置</button>
       </vc-form-item>
     </vc-form>
+    {{ $echo('china') }}
+    <vc-button >button</vc-button>
   </div>
 </template>
 
