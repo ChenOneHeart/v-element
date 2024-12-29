@@ -4,36 +4,20 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import { resolve } from "node:path";
-import dts from "vite-plugin-dts";
 export default defineConfig({
   server: {
     port: 80 // 设置开发服务器的端口号为80
   },
-  plugins: [
-    vue(),
-    vueJsx(),
-    dts({
-      tsconfigPath: "./tsconfig.build.json"
-    })
-  ],
-  resolve: {
-    alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url))
-    }
-  },
   build: {
+    outDir: "dist/umd",
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
       name: "VElement",
-      fileName: "v-element"
+      fileName: "v-element",
+      formats: ["umd"]
     },
     rollupOptions: {
-      external: [
-        "vue",
-        "@fortawesome/fontawesome-svg-core",
-        "@fortawesome/free-solid-svg-icons",
-        "@fortawesome/vue-fontawesome"
-      ],
+      external: ["vue"],
       output: {
         exports: "named",
         globals: {
@@ -46,6 +30,12 @@ export default defineConfig({
           return chunkInfo.name as string;
         }
       }
+    }
+  },
+  plugins: [vue(), vueJsx()],
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url))
     }
   }
 });
