@@ -3,27 +3,17 @@ import Button from "./components/Button/Button.vue";
 import Collapse from "./components/Collapse/Collapse.vue";
 import CollapseItem from "./components/Collapse/CollapseItem.vue";
 import Message, { closeAll as closeMessageAll, createMessage } from "./components/Message";
-
-const components = [
-  Button,
-  Collapse,
-  CollapseItem,
-  Message
-]
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import "./styles/index.css";
+library.add(fas);
+const components = [Button, Collapse, CollapseItem, Message];
 
 const install = (app: App) => {
-  components.forEach(component => {
-    app.component(component.name, component)
-  })
-}
+  components.forEach((component) => {
+    app.component(component.name, component);
+  });
+};
 
-export {
-  install,
-  Button,
-  Collapse,
-  CollapseItem,
-  Message,
-  createMessage,
-  closeMessageAll
-}
-export default install
+export { install, Button, Collapse, CollapseItem, Message, createMessage, closeMessageAll };
+export default { install };

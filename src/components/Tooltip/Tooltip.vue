@@ -15,17 +15,13 @@
 <script setup lang="ts">
 import onClickOutside from "./onClickOutside";
 import { computed, onUnmounted, ref, watch } from "vue";
-import {
-  type TooltipProps,
-  type TooltipEmits,
-  type TooltipInstance,
-} from "./types";
+import { type TooltipProps, type TooltipEmits, type TooltipInstance } from "./types";
 import { createPopper, type Instance } from "@popperjs/core";
 import { debounce } from "lodash-es";
 const props = withDefaults(defineProps<TooltipProps>(), {
   trigger: "click",
   placement: "bottom",
-  transition: "fade",
+  transition: "fade"
 });
 const emits = defineEmits<TooltipEmits>();
 const isOpen = ref(false);
@@ -52,6 +48,7 @@ const togglePopper = (e: Event) => {
   emits("visible-change", isOpen.value);
 };
 const open = () => {
+  console.log("open");
   isOpen.value = true;
   emits("visible-change", isOpen.value);
 };
@@ -65,6 +62,7 @@ const openDebounce = debounce(open, props.showDelay);
 const closeDebounce = debounce(close, props.hideDelay);
 const openFinal = () => {
   closeDebounce.cancel();
+  console.log("pre-open");
   openDebounce();
 };
 const closeFinal = () => {
@@ -85,14 +83,14 @@ if (!props.manual) {
 const popperOptions = computed(() => {
   return {
     placement: props.placement,
-    ...props.popperOptions,
+    ...props.popperOptions
   };
 });
 console.log(popperOptions.value.placement);
 // 为什么onMountedplacement不生效
 watch(
   () => props.manual,
-  isManual => {
+  (isManual) => {
     if (isManual) {
       events.value = {};
       outerEvents.value = {};
@@ -112,14 +110,10 @@ watch(
 );
 watch(
   isOpen,
-  newValue => {
+  (newValue) => {
     if (newValue) {
       if (triggerNode.value && popperNode.value) {
-        popperInstance = createPopper(
-          triggerNode.value,
-          popperNode.value,
-          popperOptions.value
-        );
+        popperInstance = createPopper(triggerNode.value, popperNode.value, popperOptions.value);
       } else {
         popperInstance?.destroy();
       }
@@ -135,7 +129,7 @@ onUnmounted(() => {
 
 defineExpose<TooltipInstance>({
   show: openFinal,
-  hide: closeFinal,
+  hide: closeFinal
 });
 </script>
 

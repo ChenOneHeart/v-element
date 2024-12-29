@@ -37,14 +37,13 @@ export default defineConfig({
           { text: '快速开始', link: '/quick-start' },
           { text: 'Button按钮', link: '/button' },
           { text: 'Icon图标', link: '/icon' },
-          { text: 'Collapse折叠面板', link: '/collapse' },
-          { text: 'Input输入框', link: '/input' },
         ]
       },
       {
         text: '数据展示',
         items: [
-          { text: 'Collapse折叠面板', link: '/collapse' },
+          { text: 'Collapse 折叠面板', link: '/collapse' },
+          { text: 'Dropdown 下拉菜单', link: '/dropdown' },
         ]
       },
       {
@@ -53,6 +52,7 @@ export default defineConfig({
           { text: 'Form 表单', link: '/form' },
           { text: 'Input 输入框', link: '/input' },
           { text: 'Switch 开关', link: '/switch' },
+          { text: 'Select 下拉选项', link: '/select' },
         ]
       },
       {
@@ -60,7 +60,7 @@ export default defineConfig({
         items: [
           { text: 'Message 消息提示', link: '/message' },
           { text: 'Tooltip 文字提示', link: '/tooltip' },
-          { text: 'Modal 对话框', link: '/modal' },
+          // { text: 'Modal 对话框', link: '/modal' },
         ]
       }
     ],

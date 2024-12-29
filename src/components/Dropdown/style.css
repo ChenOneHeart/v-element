@@ -1,4 +1,5 @@
 .vc-dropdown {
+  display: inline-flex;
   cursor: pointer;
   .vc-tooltip {
     --vc-popper-bg-color: var(--vc-bg-color-overlay);

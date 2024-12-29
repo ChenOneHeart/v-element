@@ -2,14 +2,14 @@
   <div
     class="vc-collapse-item"
     :class="{
-      'is-disabled': disabled,
+      'is-disabled': disabled
     }"
   >
     <div
       class="vc-collapse-item__header"
       :class="{
         'is-disabled': disabled,
-        'is-active': isActive,
+        'is-active': isActive
       }"
       :id="`item-header-${name}`"
       @click="handleClick"
@@ -32,13 +32,11 @@ import { computed, inject } from "vue";
 import { collapseContextKey, type CollapseItemProps } from "./types";
 import Icon from "../Icon/Icon.vue";
 defineOptions({
-  name: "VcCollapseItem",
+  name: "VcCollapseItem"
 });
 const props = defineProps<CollapseItemProps>();
 const collapseContext = inject(collapseContextKey);
-const isActive = computed(() =>
-  collapseContext?.activeNames.value.includes(props.name)
-);
+const isActive = computed(() => collapseContext?.activeNames.value.includes(props.name));
 const handleClick = () => {
   if (props.disabled) {
     return;
@@ -71,13 +69,14 @@ const transitionEvent: Record<string, (el: HTMLElement) => void> = {
   afterLeave(el) {
     el.style.height = "";
     el.style.overflow = "";
-  },
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .vc-collapse-item__header {
-  font-size: 30px;
+  //font-size: 30px;
+  font-weight: 500;
   display: flex;
   justify-content: space-between;
   align-items: center;
