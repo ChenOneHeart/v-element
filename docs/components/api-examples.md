@@ -2,48 +2,25 @@
 outline: deep
 ---
 
-# Runtime API Examples
+# 组件库介绍
 
-This page demonstrates usage of some of the runtime APIs provided by VitePress.
+组件库共10个组件，分为四类：`常规组件`，`数据展示组件`，`表单组件`，`反馈组件`。
 
-The main `useData()` API can be used to access site, theme, and page data for the current page. It works in both `.md` and `.vue` files:
+## 组件库开发思路
 
-```md
-<script setup>
-import { useData } from 'vitepress'
+### 技术选型：
 
-const { theme, page, frontmatter } = useData()
-</script>
+1. 使用`Vue3`完成组件基本功能开发。
+2. 使用`Vitepress`完成组件库文档编写。
+3. 选择`Vitest`和`Vue Test Utils`完成组件的单元测试编写，保障组件库质量达到工业级项目的标准。
+4. 选择Font Awesome popper.js等第三方库完成组件的二次封装，实现开箱即用的组件。
 
-## Results
+### 开发流程
 
-### Theme Data
-<pre>{{ theme }}</pre>
+1. 先搭建项目整体框架。
+2. 拆分组件，编写出每个组件的整体轮廓和大致需求。
+3. 针对每个组件做详细的需求分析，精确到`props` `interface` `emits` `slot`。
+4. 编写组件的功能代码。
+5. 编写组件样式和动画效果。
+6. 编写基本的测试用例并通过测试。
 
-### Page Data
-<pre>{{ page }}</pre>
-
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
-```
-
-<script setup>
-import { useData } from 'vitepress'
-
-const { site, theme, page, frontmatter } = useData()
-</script>
-
-## Results
-
-### Theme Data
-<pre>{{ theme }}</pre>
-
-### Page Data
-<pre>{{ page }}</pre>
-
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
-
-## More
-
-Check out the documentation for the [full list of runtime APIs](https://vitepress.dev/reference/runtime-api#usedata).
