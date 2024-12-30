@@ -1,14 +1,18 @@
 <script setup>
-import { ref } from "vue";
-import Collapse from "@/components/Collapse/Collapse.vue";
-const activeNames = ref("");
-const handleChange = () => {};
+import { h } from "vue";
+import { createMessage } from "@/components/Message/methods.ts";
+import Button from "@/components/Button/Button.vue";
+const open = () => {
+  createMessage({ message: "hello world", duration: 0, type: "success" });
+};
+
+const openVn = () => {
+  createMessage({
+    message: h("p", "使用VNode方式生成message")
+  });
+};
 </script>
 <template>
-  <Collapse accordion :modelValue="activeNames" @change="handleChange">
-    <CollapseItem title="according A" name="a"> according A content</CollapseItem>
-    <CollapseItem title="according B" name="b"> according B content</CollapseItem>
-    <CollapseItem disabled title="according C" name="c"> according C content</CollapseItem>
-  </Collapse>
-  <span>{{ activeNames }}</span>
+  <Button @click="open">message 基础用法</Button>
+  <Button @click="openVn">message VNode语法</Button>
 </template>

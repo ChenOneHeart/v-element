@@ -6,6 +6,7 @@ import { containerPreview, componentPreview } from '@vitepress-demo-preview/plug
 export default defineConfig({
   title: "VC-UI组件库",
   description: "A VitePress Site",
+  base: "/ChenOneHeart/",
   vite: {
     plugins: [
       vueJsx(),

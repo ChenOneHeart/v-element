@@ -3,7 +3,7 @@ title: Dropdown | V-Element
 description: Dropdown 组件的文档
 ---
 
-# Dropdown 折叠面板
+# Dropdown 下拉菜单
 
 折叠面板包含 `基础用法`, `手风琴`，通过折叠面板可以收纳内容区域，作为常规的数据展示组件。
 
