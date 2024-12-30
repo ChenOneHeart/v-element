@@ -1,14 +1,23 @@
 <script setup>
-import { ref } from "vue";
-import Collapse from "@/components/Collapse/Collapse.vue";
-const activeNames = ref("");
-const handleChange = () => {};
+import Tooltip from "@/components/Tooltip/Tooltip.vue";
+import Button from "@/components/Button/Button.vue";
 </script>
 <template>
-  <Collapse accordion :modelValue="activeNames" @change="handleChange">
-    <CollapseItem title="according A" name="a"> according A content</CollapseItem>
-    <CollapseItem title="according B" name="b"> according B content</CollapseItem>
-    <CollapseItem disabled title="according C" name="c"> according C content</CollapseItem>
-  </Collapse>
-  <span>{{ activeNames }}</span>
+  <Tooltip content="左边的文字提示" placement="left">
+    <Button>left 左边</Button>
+  </Tooltip>
+  <Tooltip content="右边的文字提示" placement="right">
+    <Button>right 右边</Button>
+  </Tooltip>
+  <Tooltip content="上方的文字提示" placement="top">
+    <Button>top 上方</Button>
+  </Tooltip>
+  <Tooltip content="下方的文字提示" placement="bottom">
+    <Button>bottom 下方</Button>
+  </Tooltip>
 </template>
+<style>
+.vc-button {
+  margin-right: 20px;
+}
+</style>

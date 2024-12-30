@@ -27,7 +27,7 @@ description: Dropdown 组件的文档
 
 ## 延迟触发
 
-可以通过`show-delay`控制展示延迟时间（鼠标悬浮n秒后触发），通过`hide-delay`控制关闭延迟时间（鼠标离开n秒后触发）。
+可以通过`show-delay`控制展示延迟时间（鼠标悬浮n秒后触发），通过`hide-delay`控制关闭延迟时间（鼠标离开n秒后触发），单位为毫秒。
 
 <preview path="../demo/Dropdown/Delay.vue" title="延迟触发" description="Dropdown 延迟触发"></preview>
 
