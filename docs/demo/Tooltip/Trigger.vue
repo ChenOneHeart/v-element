@@ -10,7 +10,7 @@ import Button from "@/components/Button/Button.vue";
     <Button>点击触发</Button>
   </Tooltip>
 </template>
-<style>
+<style scoped>
 .vc-button {
   margin-right: 20px;
 }
