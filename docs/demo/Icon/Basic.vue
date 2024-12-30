@@ -1,14 +1,14 @@
 <script setup>
-import { ref } from "vue";
-import Collapse from "@/components/Collapse/Collapse.vue";
-const activeNames = ref("");
-const handleChange = () => {};
+import Icon from "@/components/Icon/Icon.vue";
 </script>
 <template>
-  <Collapse accordion :modelValue="activeNames" @change="handleChange">
-    <CollapseItem title="according A" name="a"> according A content</CollapseItem>
-    <CollapseItem title="according B" name="b"> according B content</CollapseItem>
-    <CollapseItem disabled title="according C" name="c"> according C content</CollapseItem>
-  </Collapse>
-  <span>{{ activeNames }}</span>
+  <Icon icon="arrow-up" color="#0e7a0d" />
+  <Icon icon="arrow-down" color="#0e7a0d" />
+  <Icon icon="arrow-left" color="#0e7a0d" />
+  <Icon icon="arrow-right" color="#0e7a0d" />
 </template>
+<style scoped>
+.vc-icon {
+  margin-right: 10px;
+}
+</style>

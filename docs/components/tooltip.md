@@ -1,5 +1,5 @@
 ---
-title: Tooltip | V-Element
+title: Tooltip | VC-Element
 description: Tooltip 组件的文档
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Collapse | V-Element
+title: Collapse | VC-Element
 description: Collapse 组件的文档
 ---
 

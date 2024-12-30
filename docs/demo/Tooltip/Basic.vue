@@ -16,7 +16,7 @@ import Button from "@/components/Button/Button.vue";
     <Button>bottom 下方</Button>
   </Tooltip>
 </template>
-<style>
+<style scoped>
 .vc-button {
   margin-right: 20px;
 }

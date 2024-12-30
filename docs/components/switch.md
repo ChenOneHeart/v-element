@@ -1,5 +1,5 @@
 ---
-title: Switch | V-Element
+title: Switch | VC-Element
 description: Switch 组件的文档
 ---
 
